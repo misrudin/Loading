@@ -1,0 +1,117 @@
+:root {
+    --container-height: 110px;
+    --circle-height: 50px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f7f8fc;
+    padding: 0;
+}
+
+.loading {
+    width: var(--container-height);
+    height: var(--container-height);
+    background-color: #f7f8fc;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.loading::before {
+    content: "";
+    background: rgb(64,56,185);
+    background: linear-gradient(90deg, rgba(64,56,185,1) 0%, rgba(21,104,185,1) 100%);
+    position: absolute;
+    height: 25px;
+    width: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+}
+
+.loading .arrow1 {
+    background-color: #f7f8fc;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    left: 25px;
+    border-radius: 50%;
+    animation: .3s waterEffect1 infinite linear alternate;
+}
+
+.loading .arrow2 {
+    background-color: #f7f8fc;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    right: 25px;
+    border-radius: 50%;
+    animation: .8s waterEffect2 infinite linear alternate;
+}
+
+.loading .circle1, .loading .circle2 {
+    width: var(--circle-height);
+    height: var(--circle-height);
+    border-radius: 50%;
+    position: absolute;
+    z-index: 40;
+    background: rgb(64,56,185);
+    background: linear-gradient(90deg, rgba(64,56,185,1) 0%, rgba(21,104,185,1) 100%);
+}
+
+.loading .circle1 {
+    top: 0;
+    animation: 1s bounceCircle1 infinite linear alternate;
+}
+
+.loading .circle2 {
+    bottom: 0;
+    animation: 1s bounceCircle2 infinite linear alternate;
+}
+
+
+@keyframes bounceCircle1 {
+    from {
+        top: 0;
+    }
+    to {
+        top: calc(var(--container-height) - var(--circle-height));
+    }
+}
+
+@keyframes bounceCircle2 {
+    from {
+        bottom: 0;
+    }
+    to {
+        bottom: calc(var(--container-height) - var(--circle-height));
+    }
+}
+
+@keyframes waterEffect1 {
+    from {
+        left: 14px;
+    }
+    to {
+        left: 16px;
+    }
+}
+
+@keyframes waterEffect2 {
+    from {
+        right: 14px;
+    }
+    to {
+        right: 16px;
+    }
+}
